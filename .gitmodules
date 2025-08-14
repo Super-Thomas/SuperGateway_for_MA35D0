@@ -1,6 +1,6 @@
 [submodule "openwrt"]
 	path = openwrt
-	url = https://github.com/openwrt/openwrt.git
+	url = https://github.com/OpenNuvoton/Nuvoton-OpenWrt-22.03.git
 [submodule "third_party/connectedhomeip"]
 	path = third_party/connectedhomeip
 	url = https://github.com/project-chip/connectedhomeip.git
