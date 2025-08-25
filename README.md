@@ -104,6 +104,40 @@ scan le
 3. Please try using other 'bluetoothctl' options to establish BLE connection and GATT communication.
 
 ### Zigbee
+1. Enter commands below via UART to the MA35D0 after booting.
+```
+mkdir -p /usr/local/var/lib/ezmesh-zbgw/zbdb
+ezmesh-zbgw &
+```
+<img width="989" height="790" alt="image" src="https://github.com/user-attachments/assets/35fb1186-2366-49c2-8e16-a7c682c0b1ab" /></br>
+2. Then you can establish a TCP connection to <eth1_IP>:10010(for example, 10.10.10.1:10010) to send/recv cmds.</br>
+below are the reference resources:</br>
+[RT58x_Zigbee_Gateway_Command_Manual_V1.2.3.pdf](https://github.com/RafaelMicro/RT58x_SDK/blob/main/Docs/%5BSW_17%5DRT58x_Zigbee_Gateway_Command_Manual_V1.2.3.pdf)</br>
+[Zigbee_Tool](https://github.com/RafaelMicro/RT58x_SDK/blob/main/Tools/Zigbee_Tool.7z)</br>
+</br>
+For cmds, it's all in Hex, for example :
+```
+- Start GW : FF FC FC FF 0B 39 00 00 00 00 00 00 0B 66 55 00 F5
+FF FC FC FF : Header
+0B : length
+39 00 00 00 : CMD ID 0x0000-0039, "Gateway Start"
+00 00 : Address (GW Addr)
+00 : Address mode (0, unicast; 1, group)
+0B 66 55 00 : Parameters
+F5 : Checksum
+
+- Permit Join Request : FF FC FC FF 09 36 00 00 00 00 00 00 B4 00 0C
+FF FC FC FF : Header
+09 : length
+36 00 00 00 : CMD ID 0x0000-0036, "Permit Join Request"
+00 00 : Address (GW Addr)
+00 : Address mode (0, unicast; 1, group)
+B4 00 : Parameters
+0C : Checksum
+```
+</br>
+You can also use the Zigbee Tool to enable some operations on 'ezmesh-zbgw'.
+<img width="1056" height="647" alt="image" src="https://github.com/user-attachments/assets/427d0ffd-d24f-4545-8734-02f2c9fc2a04" />
 
 ## Thanks to
 [RafaelMicro SuperGateway](https://github.com/RafaelMicro/SuperGateway)</br>
