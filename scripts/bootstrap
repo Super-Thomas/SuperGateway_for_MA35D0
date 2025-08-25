@@ -11,6 +11,8 @@ pip3 install pycryptodomex pyelftools
 
 pip3 install pyusb usb crypto ecdsa crcmod tqdm pycryptodome
 
+git submodule update --init
+
 cp build/files ./openwrt/ -r
 
 cd third_party/connectedhomeip
